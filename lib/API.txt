@@ -72,6 +72,22 @@ public function getPersonaName():String
 // startProcess(path:String) first
 public function restartAppIfNecessary(appID:uint):Boolean
 
+// +wot
+// ISteamUtils#GetIPCountry()
+// @default ""
+// Returns the 2 digit ISO 3166-1-alpha-2 format country code which client is running in.
+public function getIPCountry():String
+
+// +wot
+// ISteamUtils#IsSteamRunningOnSteamDeck()
+// @default false
+public function isSteamRunningOnSteamDeck():Boolean
+
+// +wot
+// ISteamUtils#IsSteamInBigPictureMode()
+// @default false
+public function isSteamInBigPictureMode():Boolean
+
 /************************/
 /* Stats / Achievements */
 /************************/
@@ -567,6 +583,26 @@ public function getSmallFriendAvatar(id:String):BitmapData
 // Returns friend medium avatar bitmap data
 public function getMediumFriendAvatar(id:String):BitmapData
 
+// +wot
+// GetLargeFriendAvatar(id)
+// @default null
+// Returns friend large avatar bitmap data
+public function getLargeFriendAvatar(id:String):BitmapData
+
+// +wot
+// SetRichPresence(key, value)
+// @default false
+// Sets your Rich Presence and enables users to join your game directly with launch params
+// key: "status"   value: "Waiting in Queue"
+// key: "connect"  value: "<your game's launch params>"
+public function setRichPresence(key:String, value:String):Boolean
+
+// +wot
+// ClearRichPresence()
+// @default false
+// Clears your rich presence
+public function clearRichPresence():Boolean
+
 /******************************/
 /* Authentication & Ownership */
 /******************************/
@@ -673,6 +709,18 @@ public function isOverlayEnabled():Boolean
 // @default false
 // @arg position should be one of the UtilsConstants.OVERLAYPOSITION_* constants.
 public function setOverlayNotificationPosition(position:uint):Boolean
+
+// +wot
+// ISteamUtils#SetOverlayNotificationInset(hInset, vInset)
+// @default false
+// Sets the inset of the overlay notification from the corner specified by SetOverlayNotificationPosition().
+public function setOverlayNotificationInset(hInset:int, vInset:int):Boolean
+
+// +wot
+// ISteamUtils#BOverlayNeedsPresent()
+// @default false
+// Checks if the Overlay needs a present. Only required if using event driven render updates.
+public function overlayNeedsPresent():Boolean
 
 /***********************/
 /* DLC / subscriptions */

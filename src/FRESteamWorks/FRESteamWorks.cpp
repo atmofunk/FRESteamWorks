@@ -111,6 +111,24 @@ AIR_FUNC(AIRSteam_GetPersonaName) {
 	return FREString(g_Steam->GetPersonaName());
 }
 
+AIR_FUNC(AIRSteam_GetIPCountry) {
+	if (!g_Steam) return FREString("");
+
+	return FREString(g_Steam->GetIPCountry());
+}
+
+AIR_FUNC(AIRSteam_IsSteamRunningOnSteamDeck) {
+	if (!g_Steam) return FREBool(false);
+
+	return FREBool(g_Steam->IsSteamRunningOnSteamDeck());
+}
+
+AIR_FUNC(AIRSteam_IsSteamInBigPictureMode) {
+	if (!g_Steam) return FREBool(false);
+
+	return FREBool(g_Steam->IsSteamInBigPictureMode());
+}
+
 AIR_FUNC(AIRSteam_RestartAppIfNecessary) {
 	if (argc != 1) return FREBool(false);
 	uint32 appID = 0;
@@ -1217,6 +1235,34 @@ AIR_FUNC(AIRSteam_GetMediumFriendAvatar) {
 	return FREBitmapDataFromImageRGBA(image.width, image.height, image.argb_data());
 }
 
+AIR_FUNC(AIRSteam_GetLargeFriendAvatar) {
+	ARG_CHECK(1, nullptr);
+
+	uint64 steamId;
+	if (!FREGetUint64(argv[0], &steamId)) return nullptr;
+
+	Image image = g_Steam->GetLargeFriendAvatar(CSteamID(steamId));
+	if (image.data.size() == 0) return nullptr;
+	return FREBitmapDataFromImageRGBA(image.width, image.height, image.argb_data());
+}
+
+AIR_FUNC(AIRSteam_SetRichPresence) {
+	ARG_CHECK(2, FREBool(false));
+
+	std::string key;
+	if (!FREGetString(argv[0], key)) return FREBool(false);
+
+	std::string value;
+	if (!FREGetString(argv[1], value)) return FREBool(false);
+
+	return FREBool(g_Steam->SetRichPresence(key, value));
+}
+
+AIR_FUNC(AIRSteam_ClearRichPresence) {
+	ARG_CHECK(0, FREBool(false));
+	return FREBool(g_Steam->ClearRichPresence());
+}
+
 /*
  * authentication & ownership
  */
@@ -1403,6 +1449,26 @@ AIR_FUNC(AIRSteam_SetOverlayNotificationPosition) {
 
 	return FREBool(g_Steam->SetOverlayNotificationPosition(
 		ENotificationPosition(pos)));
+}
+
+AIR_FUNC(AIRSteam_OverlayNeedsPresent) {
+	ARG_CHECK(0, FREBool(false));
+
+	return FREBool(g_Steam->OverlayNeedsPresent());
+}
+
+AIR_FUNC(AIRSteam_SetOverlayNotificationInset) {
+	ARG_CHECK(2, FREBool(false));
+
+	int hInset;
+	if (!FREGetInt32(argv[0], &hInset))
+		return FREBool(false);
+
+	int vInset;
+	if (!FREGetInt32(argv[1], &vInset))
+		return FREBool(false);
+
+	return FREBool(g_Steam->SetOverlayNotificationInset(hInset, vInset));
 }
 
 /*

@@ -37,6 +37,9 @@ package com.amanitadesign.steam {
 		function getCurrentGameLanguage():String
 		function getPersonaName():String
 		function restartAppIfNecessary(appID:uint):Boolean
+		function getIPCountry():String
+		function isSteamRunningOnSteamDeck():Boolean
+		function isSteamInBigPictureMode():Boolean
 		/************************/
 		/* Stats / Achievements */
 		/************************/
@@ -131,6 +134,9 @@ package com.amanitadesign.steam {
 		function getFriendPersonaName(id:String):String
 		function getSmallFriendAvatar(id:String):BitmapData
 		function getMediumFriendAvatar(id:String):BitmapData
+		function getLargeFriendAvatar(id:String):BitmapData
+		function setRichPresence(key:String, value:String):Boolean
+		function clearRichPresence():Boolean
 		/******************************/
 		/* Authentication & Ownership */
 		/******************************/
@@ -152,6 +158,8 @@ package com.amanitadesign.steam {
 		function activateGameOverlayInviteDialog(steamIdLobby:String):Boolean
 		function isOverlayEnabled():Boolean
 		function setOverlayNotificationPosition(position:uint):Boolean
+		function setOverlayNotificationInset(hInset:int, vInset:int):Boolean
+		function overlayNeedsPresent():Boolean
 		/***********************/
 		/* DLC / subscriptions */
 		/***********************/

@@ -146,6 +146,18 @@ package com.amanitadesign.steam {
 			return _ExtensionContext.call("AIRSteam_RestartAppIfNecessary", appID) as Boolean;
 		}
 
+		public function getIPCountry():String {
+			return _ExtensionContext.call("AIRSteam_GetIPCountry") as String;
+		}
+
+		public function isSteamRunningOnSteamDeck():Boolean {
+			return _ExtensionContext.call("AIRSteam_IsSteamRunningOnSteamDeck") as Boolean;
+		}
+
+		public function isSteamInBigPictureMode():Boolean {
+			return _ExtensionContext.call("AIRSteam_IsSteamInBigPictureMode") as Boolean;
+		}
+
 		/************************/
 		/* Stats / Achievements */
 		/************************/
@@ -477,6 +489,18 @@ package com.amanitadesign.steam {
 			return _ExtensionContext.call("AIRSteam_GetMediumFriendAvatar", id) as BitmapData;
 		}
 
+		public function getLargeFriendAvatar(id:String):BitmapData {
+			return _ExtensionContext.call("AIRSteam_GetLargeFriendAvatar", id) as BitmapData;
+		}
+
+		public function setRichPresence(key:String, value:String):Boolean {
+			return _ExtensionContext.call("AIRSteam_SetRichPresence", key, value) as Boolean;
+		}
+
+		public function clearRichPresence():Boolean {
+			return _ExtensionContext.call("AIRSteam_ClearRichPresence") as Boolean;
+		}
+
 		/******************************/
 		/* Authentication & Ownership */
 		/******************************/
@@ -541,6 +565,14 @@ package com.amanitadesign.steam {
 
 		public function setOverlayNotificationPosition(position:uint):Boolean {
 			return _ExtensionContext.call("AIRSteam_SetOverlayNotificationPosition", position) as Boolean;
+		}
+
+		public function setOverlayNotificationInset(hInset:int, vInset:int):Boolean {
+			return _ExtensionContext.call("AIRSteam_SetOverlayNotificationInset", hInset, vInset) as Boolean;
+		}
+
+		public function overlayNeedsPresent():Boolean {
+			return _ExtensionContext.call("AIRSteam_OverlayNeedsPresent") as Boolean;
 		}
 
 		/***********************/

@@ -39,6 +39,9 @@ public:
 	std::string GetAvailableGameLanguages();
 	std::string GetCurrentGameLanguage();
 	std::string GetPersonaName();
+	std::string GetIPCountry();
+	bool IsSteamRunningOnSteamDeck();
+	bool IsSteamInBigPictureMode();
 
 	// stats/achievements
 	bool RequestStats();
@@ -148,7 +151,13 @@ public:
 	std::string GetFriendPersonaName(CSteamID steamId);
 	Image GetSmallFriendAvatar(CSteamID steamId);
 	Image GetMediumFriendAvatar(CSteamID steamId);
+	Image GetLargeFriendAvatar(CSteamID steamId);
 
+	// rich presence
+	bool SetRichPresence(std::string key, std::string value);
+	bool ClearRichPresence();
+	//
+	
 	// authentication & ownership
 	HAuthTicket GetAuthSessionTicket(char** data, uint32* length);
 	HAuthTicket GetAuthSessionTicketResult();
@@ -166,7 +175,9 @@ public:
 	bool ActivateGameOverlayToStore(AppId_t appId, EOverlayToStoreFlag flag);
 	bool ActivateGameOverlayInviteDialog(CSteamID lobbyId);
 	bool IsOverlayEnabled();
+	bool OverlayNeedsPresent();
 	bool SetOverlayNotificationPosition(ENotificationPosition pos);
+	bool SetOverlayNotificationInset(int hInset, int vInset);	
 
 	// DLC / subscriptions
 	bool IsSubscribedApp(AppId_t appId);

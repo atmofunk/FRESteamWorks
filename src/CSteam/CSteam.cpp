@@ -101,6 +101,20 @@ std::string CSteam::GetPersonaName() {
 	return std::string(m_ctx.SteamFriends()->GetPersonaName());
 }
 
+std::string CSteam::GetIPCountry() {
+	if (!m_bInitialized) return "";
+
+	return std::string(m_ctx.SteamUtils()->GetIPCountry());
+}
+
+bool CSteam::IsSteamRunningOnSteamDeck(){
+	return m_ctx.SteamUtils()->IsSteamRunningOnSteamDeck();
+}
+
+bool CSteam::IsSteamInBigPictureMode(){
+	return m_ctx.SteamUtils()->IsSteamInBigPictureMode();
+}
+
 // stats/achievements
 
 bool CSteam::SetAchievement(std::string name) {
@@ -732,6 +746,13 @@ Image CSteam::GetMediumFriendAvatar(CSteamID steamId) {
 	return GetImageData(image_handle);
 }
 
+Image CSteam::GetLargeFriendAvatar(CSteamID steamId) {
+	if (!m_bInitialized) return Image(0, 0);
+
+	int image_handle = m_ctx.SteamFriends()->GetLargeFriendAvatar(steamId);
+	return GetImageData(image_handle);
+}
+
 Image CSteam::GetImageData(int image_handle) {
 	uint32 width, height;
 	bool success = m_ctx.SteamUtils()->GetImageSize(image_handle, &width, &height);
@@ -743,6 +764,16 @@ Image CSteam::GetImageData(int image_handle) {
 	if (!success) return Image(0, 0);
 
 	return image;
+}
+
+bool CSteam::SetRichPresence(std::string key, std::string value) {
+	if (!m_bInitialized) return false;
+	return m_ctx.SteamFriends()->SetRichPresence(key.c_str(), value.c_str());
+}
+
+bool CSteam::ClearRichPresence() {
+	m_ctx.SteamFriends()->ClearRichPresence();
+	return false;
 }
 
 // authentication & ownership
@@ -857,6 +888,19 @@ bool CSteam::SetOverlayNotificationPosition(ENotificationPosition pos) {
 
 	m_ctx.SteamUtils()->SetOverlayNotificationPosition(pos);
 	return true;
+}
+
+bool CSteam::SetOverlayNotificationInset(int hInset, int vInset) {
+	if (!m_bInitialized) return false;
+
+	m_ctx.SteamUtils()->SetOverlayNotificationInset(hInset, vInset);
+	return true;
+}
+
+bool CSteam::OverlayNeedsPresent() {
+	if (!m_bInitialized) return false;
+
+	return m_ctx.SteamUtils()->BOverlayNeedsPresent();
 }
 
 // DLC / subscription

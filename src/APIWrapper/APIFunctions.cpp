@@ -132,6 +132,24 @@ bool AIRSteam_RestartAppIfNecessary() {
 	return ret;
 }
 
+std::string AIRSteam_GetIPCountry() {
+	if (!g_Steam) return "";
+
+	return g_Steam->GetIPCountry();
+}
+
+bool AIRSteam_IsSteamRunningOnSteamDeck() {
+	if (!g_Steam) return false;
+
+	return g_Steam->IsSteamRunningOnSteamDeck();
+}
+
+bool AIRSteam_IsSteamBigPictureMode() {
+	if (!g_Steam) return false;
+
+	return g_Steam->IsSteamBigPictureMode();
+}
+
 /*
  * stats / achievements
  */
@@ -1064,6 +1082,29 @@ bool AIRSteam_GetMediumFriendAvatar() {
 	return (image.data.size() != 0);
 }
 
+bool AIRSteam_GetLargeFriendAvatar() {
+	uint64 steamId = g_Steam->get_uint64();
+
+	Image image = g_Steam->GetLargeFriendAvatar(CSteamID(steamId));
+
+	g_Steam->send(image.width);
+	g_Steam->send(image.height);
+	g_Steam->sendBuffer(AmfByteArray(image.argb_data()));
+
+	return (image.data.size() != 0);
+}
+
+bool AIRSteam_SetRichPresence() {
+	std::string key = g_Steam->get_string();
+	std::string value = g_Steam->get_string();
+
+	return g_Steam->SetRichPresence(key, value);
+}
+
+bool AIRSteam_ClearRichPresence() {
+	return g_Steam->ClearRichPresence();
+}
+
 /*
  * authentication & ownership
  */
@@ -1187,10 +1228,25 @@ bool AIRSteam_IsOverlayEnabled() {
 }
 
 bool AIRSteam_SetOverlayNotificationPosition() {
-	uint32 pos = g_Steam->get_int();
 	if (!g_Steam) return false;
 
-	return g_Steam->SetOverlayNotificationPosition(ENotificationPosition(pos));
+	uint32 pos = g_Steam->get_int();
+	return g_Steam->SetOverlayNotificationPosition(
+		ENotificationPosition(pos));
+}
+
+bool AIRSteam_SetOverlayNotificationInset() {
+	if (!g_Steam) return false;
+	uint32 hInset = g_Steam->get_int();
+	uint32 vInset = g_Steam->get_int();
+
+	return g_Steam->SetOverlayNotificationInset(hInset, vInset);
+}
+
+bool AIRSteam_OverlayNeedsPresent() {
+	if (!g_Steam) return false;
+
+	return g_Steam->OverlayNeedsPresent();
 }
 
 /*
