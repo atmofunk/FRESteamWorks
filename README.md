@@ -5,6 +5,47 @@ applications. This allows you to implement Steam achievements, leaderboards, clo
 storage, workshop support and much more in your AIR application - on Windows,
 OS X and Linux.
 
+
+# waveofthought #
+I forked this project to both expand Steamworks functionality and enable 64-bit builds.  All of Ventero's instructions are still valid, and the examples/tests still work.
+### Additional API ###
+```
+SetRichPresence(key:String, value:String):void
+ClearRichPresence():void
+
+GetIPCountry():String
+IsSteamRunningOnSteamDeck():Boolean
+IsSteamInBigPictureMode():Boolean
+
+isAchievementEarned(achName:String):Boolean // same as isAchievement(), but clearer to its purpose
+getAchievementAchievedPercent(achName:String):Number
+getAchievementDisplayAttribute(achName:String, attribute:String):String
+getAchievementIcon(achName):String
+getAchievementName(achIndex:int):String
+
+getLargeFriendAvatar(is:String):BitmapData
+
+setOverlayNotificationInset(hInset:int, vInset:int) : void
+
+overlayNeedsPresent():Boolean
+```
+
+### Building ###
+Project has been updated to VS2019
+
+A new SDKPaths.props file has been added to help specify your own Air + Steam SDK install directories.  Edit this file directly, or use the VS Properties Manager
+
+*Outputting FRESteamWorks DLLs:*
+1) Build > Batch Build... 
+2) Check both Win32 + x64 Releases
+3) Click Build (or Rebuild)
+
+The original post-build event will copy DLLs to the ../lib/bin folder and attempt to run compileANE.bat as expected, but will trigger twice.
+As such, compileANE.bat has been updated to check for the existence of both 32+64 bit DLLs before continuing, to prevent errors.
+
+
+# Ventero #
+
 This project initially started as a fork of [FRESteamWorks by Oldes/Amanita Design](https://github.com/Oldes/FRESteamWorks/).
 
 If you want to contribute to this project, please take a look at the

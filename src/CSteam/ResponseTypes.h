@@ -41,7 +41,9 @@ enum ResponseTypes {
 	RESPONSE_OnValidateAuthTicketResponse,
 	RESPONSE_OnDLCInstalled,
 	RESPONSE_OnMicroTxnAuthorizationResponse,
-	RESPONSE_OnEncryptedAppTicketResponse
+	RESPONSE_OnEncryptedAppTicketResponse,
+	RESPONSE_OnUserAchievementIconFetched,
+	RESPONSE_OnAvatarImageLoaded
 };
 
 #endif

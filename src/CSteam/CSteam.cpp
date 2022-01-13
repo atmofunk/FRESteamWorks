@@ -27,7 +27,9 @@ CSteam::CSteam():
 	m_DLCInstalled(0),
 	m_CallbackUserStatsReceived(this, &CSteam::OnUserStatsReceived),
 	m_CallbackUserStatsStored(this, &CSteam::OnUserStatsStored),
+	m_CallbackAvatarImageLoaded(this, &CSteam::OnAvatarImageLoaded),
 	m_CallbackAchievementStored(this, &CSteam::OnAchievementStored),
+	m_CallbackAchievementIconFetched(this, &CSteam::OnUserAchievementIconFetched),
 	m_CallbackGetAuthSessionTicketResponse(this, &CSteam::OnGetAuthSessionTicketResponse),
 	m_OnValidateAuthTicketResponse(this, &CSteam::OnValidateAuthTicketResponse),
 	m_CallbackGameOverlayActivated(this, &CSteam::OnGameOverlayActivated),
@@ -137,6 +139,45 @@ bool CSteam::IsAchievement(std::string name) {
 	bool result = false;
 	m_ctx.SteamUserStats()->GetAchievement(name.c_str(), &result);
 	return result;
+}
+
+bool CSteam::IsAchievementEarned(std::string name) {
+	if (!m_bInitialized) return false;
+
+	bool result = false;
+	m_ctx.SteamUserStats()->GetAchievement(name.c_str(), &result);
+	return result;
+}
+
+bool CSteam::GetAchievementAchievedPercent(std::string name, float *value) {
+	if (!m_bInitialized) return false;
+
+	return m_ctx.SteamUserStats()->GetAchievementAchievedPercent(name.c_str(), value);
+}
+
+std::string CSteam::GetAchievementDisplayAttribute(std::string name, std::string attribute) {
+	if (!m_bInitialized) return "";
+
+	return m_ctx.SteamUserStats()->GetAchievementDisplayAttribute(name.c_str(), attribute.c_str());
+}
+
+std::string CSteam::GetAchievementName(uint32 index) {
+	if (!m_bInitialized) return "";
+
+	return m_ctx.SteamUserStats()->GetAchievementName(index);
+}
+
+uint32 CSteam::GetNumAchievements() {
+	if (!m_bInitialized) return 0;
+
+	return m_ctx.SteamUserStats()->GetNumAchievements();
+}
+
+Image CSteam::GetAchievementIcon(std::string name) {
+	if (!m_bInitialized) return Image(0, 0);
+
+	int image_handle = m_ctx.SteamUserStats()->GetAchievementIcon(name.c_str());
+	return GetImageData(image_handle);
 }
 
 bool CSteam::IndicateAchievementProgress(std::string name,
@@ -751,6 +792,8 @@ Image CSteam::GetLargeFriendAvatar(CSteamID steamId) {
 
 	int image_handle = m_ctx.SteamFriends()->GetLargeFriendAvatar(steamId);
 	return GetImageData(image_handle);
+
+
 }
 
 Image CSteam::GetImageData(int image_handle) {
@@ -967,6 +1010,20 @@ void CSteam::OnUserStatsReceived(UserStatsReceived_t *pCallback) {
 	DispatchEvent(RESPONSE_OnUserStatsReceived, pCallback->m_eResult);
 }
 
+
+void CSteam::OnUserAchievementIconFetched(UserAchievementIconFetched_t *pCallback) {
+	// we may get callbacks for other games' results arriving. ignore them
+	//if (m_iAppID != pCallback->m_nGameID) return;
+
+	DispatchEvent(RESPONSE_OnUserAchievementIconFetched, k_EResultOK);
+}
+
+void CSteam::OnAvatarImageLoaded(AvatarImageLoaded_t *pCallback) {
+	DispatchEvent(RESPONSE_OnAvatarImageLoaded, k_EResultOK);
+}
+
+
+
 void CSteam::OnUserStatsStored(UserStatsStored_t *pCallback) {
 	// we may get callbacks for other games' stats arriving, ignore them
 	if (m_iAppID != pCallback->m_nGameID) return;
@@ -980,6 +1037,8 @@ void CSteam::OnAchievementStored(UserAchievementStored_t *pCallback) {
 
 	DispatchEvent(RESPONSE_OnAchievementStored, k_EResultOK);
 }
+
+
 
 void CSteam::OnRequestGlobalStats(GlobalStatsReceived_t *result, bool failure) {
 	if (m_iAppID != result->m_nGameID) return;
@@ -1104,9 +1163,11 @@ void CSteam::OnValidateAuthTicketResponse(ValidateAuthTicketResponse_t *pCallbac
 	DispatchEvent(RESPONSE_OnValidateAuthTicketResponse, pCallback->m_eAuthSessionResponse);
 }
 
-void CSteam::OnEncryptedAppTicketResponse(EncryptedAppTicketResponse_t *pCallback, bool failure) {
+void CSteam::OnEncryptedAppTicketResponse(EncryptedAppTicketResponse_t* pCallback, bool failure) {
 	DispatchEvent(RESPONSE_OnEncryptedAppTicketResponse, pCallback->m_eResult);
 }
+
+
 
 void CSteam::OnDLCInstalled(DlcInstalled_t *pCallback) {
 	m_DLCInstalled = pCallback->m_nAppID;

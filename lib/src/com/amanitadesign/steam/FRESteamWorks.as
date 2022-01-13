@@ -177,6 +177,30 @@ package com.amanitadesign.steam {
 			return _ExtensionContext.call("AIRSteam_IsAchievement", name) as Boolean;
 		}
 
+		public function isAchievementEarned(name:String):Boolean {
+			return _ExtensionContext.call("AIRSteam_IsAchievementEarned", name) as Boolean;
+		}
+
+		public function getAchievementAchievedPercent(name:String):Number {
+			return _ExtensionContext.call("AIRSteam_GetAchievementAchievedPercent", name) as Number;
+		}
+
+		public function getAchievementDisplayAttribute(name:String, attribute:String):String {
+			return _ExtensionContext.call("AIRSteam_GetAchievementDisplayAttribute", name, attribute) as String;
+		}
+
+		public function getAchievementIcon(name:String):BitmapData {
+			return _ExtensionContext.call("AIRSteam_GetAchievementIcon", name) as BitmapData;
+		}
+
+		public function getAchievementName(index:uint):String {
+			return _ExtensionContext.call("AIRSteam_GetAchievementName", index) as String;
+		}
+
+		public function getNumAchievements():int {
+			return _ExtensionContext.call("AIRSteam_GetNumAchievements") as int;
+		}
+
 		public function indicateAchievementProgress(name:String, currentProgress:int, maxProgress:int):Boolean {
 			return _ExtensionContext.call("AIRSteam_IndicateAchievementProgress", name, currentProgress, maxProgress) as Boolean;
 		}

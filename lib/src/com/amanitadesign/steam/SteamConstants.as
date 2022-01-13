@@ -43,6 +43,8 @@ package com.amanitadesign.steam {
 		public static const RESPONSE_OnDLCInstalled:int = 27;
 		public static const RESPONSE_OnMicroTxnAuthorizationResponse:int = 28;
 		public static const RESPONSE_OnEncryptedAppTicketResponse:int = 29;
+		public static const RESPONSE_OnUserAchievementIconFetched:int = 30;
+		public static const RESPONSE_OnAvatarImageLoaded:int = 31;
 		// END GENERATED CODE
 	}
 }

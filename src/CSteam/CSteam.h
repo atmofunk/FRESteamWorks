@@ -48,6 +48,14 @@ public:
 	bool SetAchievement(std::string name);
 	bool ClearAchievement(std::string name);
 	bool IsAchievement(std::string name);
+
+	bool IsAchievementEarned(std::string name);
+	bool GetAchievementAchievedPercent(std::string name, float* value);
+	std::string GetAchievementDisplayAttribute(std::string name, std::string atribute);
+	std::string GetAchievementName(uint32 index);
+	Image GetAchievementIcon(std::string name);
+	uint32 GetNumAchievements();
+
 	bool IndicateAchievementProgress(std::string name, uint32 currentProgress,
 		uint32 maxProgress);
 	bool GetStat(std::string name, int32 *value);
@@ -237,15 +245,15 @@ private:
 		void func(param*, bool)
 
 	// stats/achievements
-	STEAM_CALLBACK(CSteam, OnUserStatsReceived, UserStatsReceived_t,
-	               m_CallbackUserStatsReceived);
-	STEAM_CALLBACK(CSteam, OnUserStatsStored, UserStatsStored_t,
-	               m_CallbackUserStatsStored);
-	STEAM_CALLBACK(CSteam, OnAchievementStored,
-	               UserAchievementStored_t, m_CallbackAchievementStored);
-	STEAM_CALLRESULT(CSteam, OnRequestGlobalStats,
-	                 GlobalStatsReceived_t, m_CallbackRequestGlobalStats);
-
+	STEAM_CALLBACK(CSteam, OnUserStatsReceived, UserStatsReceived_t, m_CallbackUserStatsReceived);
+	STEAM_CALLBACK(CSteam, OnUserStatsStored, UserStatsStored_t, m_CallbackUserStatsStored);
+	STEAM_CALLBACK(CSteam, OnAchievementStored, UserAchievementStored_t, m_CallbackAchievementStored);
+	STEAM_CALLBACK(CSteam, OnUserAchievementIconFetched, UserAchievementIconFetched_t, m_CallbackAchievementIconFetched);
+	STEAM_CALLRESULT(CSteam, OnRequestGlobalStats, GlobalStatsReceived_t, m_CallbackRequestGlobalStats);
+	
+	// friends
+	STEAM_CALLBACK(CSteam, OnAvatarImageLoaded, AvatarImageLoaded_t, m_CallbackAvatarImageLoaded);
+	
 	// leaderboards
 	STEAM_CALLRESULT(CSteam, OnFindLeaderboard,
 	                 LeaderboardFindResult_t,

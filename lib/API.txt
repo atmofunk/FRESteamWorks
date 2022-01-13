@@ -111,8 +111,44 @@ public function clearAchievement(name:String):Boolean
 
 // GetAchievement(name)
 // @default false
-// somewhat poorly named ...
+// somewhat poorly named ... use isAchievementAchieved instead
 public function isAchievement(name:String):Boolean
+
+// +wot
+// GetAchievement(name)
+// Retrieve the unlock state of the given achievement (true = earned)
+// @default false
+public function isAchievementEarned(name:String):Boolean
+
+// +wot
+// GetAchievementAchievedPercent(name)
+// @default 0.0
+public function getAchievementAchievedPercent(name:String):Number
+
+// +wot
+// GetAchievementDisplayAttribute(name, attribute)
+// Get general attributes for an achievement. Currently provides: Name, Description, and Hidden status
+// @default ""
+public function getAchievementDisplayAttribute(name:String, attribute:String):String
+
+// +wot
+// GetAchievementIcon(name)
+// Fetches the icon for an achievement.
+// @default false
+// @event RESPONSE_OnUserAchievementIconFetched, response = m_eResult
+public function getAchievementIcon(name:String):BitmapData
+
+// +wot
+// GetAchievementName
+// Get the name of an achievement.
+// @default ""
+public function getAchievementName(index:uint):String
+
+// +wot
+// GetNumAchievements
+// Get the number of achievements for this game
+// @default 0
+public function getNumAchievements():int
 
 // IndicateAchievementProgress(name, currentProgress, maxProgress)
 // @default false
@@ -586,7 +622,7 @@ public function getMediumFriendAvatar(id:String):BitmapData
 // +wot
 // GetLargeFriendAvatar(id)
 // @default null
-// Returns friend large avatar bitmap data
+// @event RESPONSE_OnAvatarImageLoaded, response = m_eResult
 public function getLargeFriendAvatar(id:String):BitmapData
 
 // +wot

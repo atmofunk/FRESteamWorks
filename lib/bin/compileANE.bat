@@ -1,8 +1,19 @@
 @echo off
 if not exist ..\..\config.bat (
-    echo "FRESteamWorks/config.bat is not set up!"
+    echo FRESteamWorks/config.bat is not set up!
     goto :eof
 )
+
+if not exist FRESteamWorks.dll (
+    echo Missing FRESteamWorks.dll - skipping ANE build
+    goto :eof
+)
+
+if not exist FRESteamWorks-64.dll (
+    echo Missing FRESteamWorks-64.dll - skipping ANE build
+    goto :eof
+)
+
 call ..\..\config.bat
 
 call "%FLEX_SDK%\bin\acompc" -source-path ..\src ^

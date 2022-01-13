@@ -141,6 +141,7 @@ package {
 			addButton("Check friends", checkFriends, _friendsContainer);
 			addButton("Show small avatar", getSmallFriendAvatar, _friendsContainer);
 			addButton("Show medium avatar", getMediumFriendAvatar, _friendsContainer);
+			addButton("Show large avatar", getLargeFriendAvatar, _friendsContainer);
 			addButton("Hide avatar", clearAvatarBitmap, _friendsContainer);
 
 			Steamworks.addEventListener(SteamEvent.STEAM_RESPONSE, onSteamResponse);
@@ -345,6 +346,17 @@ package {
 			var avatar:BitmapData = Steamworks.getMediumFriendAvatar(id);
 			var result:String = (avatar != null ? "(" + avatar.width + ", " + avatar.height + ")" : "null");
 			log("Steamworks.getMediumFriendAvatar(" + id + ") result == " + result);
+			changeAvatarBitmap(avatar);
+		}
+
+		private function getLargeFriendAvatar(e:Event = null):void
+		{
+			if (!Steamworks.isReady) return;
+
+			var id:String = getFriendByIndex(0);
+			var avatar:BitmapData = Steamworks.getLargeFriendAvatar(id);
+			var result:String = (avatar != null ? "(" + avatar.width + ", " + avatar.height + ")" : "null");
+			log("Steamworks.getLargeFriendAvatar(" + id + ") result == " + result);
 			changeAvatarBitmap(avatar);
 		}
 

@@ -188,6 +188,49 @@ bool AIRSteam_IsAchievement() {
 	return g_Steam->IsAchievement(name);
 }
 
+bool AIRSteam_IsAchievementEarned() {
+	std::string name = g_Steam->get_string();
+	if (!g_Steam || name.empty()) return false;
+
+	return g_Steam->IsAchievementEarned(name);
+}
+
+bool AIRSteam_GetAchievementAchievedPercent() {
+	std::string name = g_Steam->get_string();
+	if (!g_Steam || name.empty()) return 0.0f;
+
+	float value = 0.0f;
+	g_Steam->GetAchievementAchievedPercent(name, &value);
+	return value;
+}
+
+bool AIRSteam_GetAchievementDisplayAttribute() {
+	std::string name = g_Steam->get_string();
+	if (!g_Steam || name.empty()) return "";
+
+	std::string attribute = g_Steam->get_string();
+	if (!g_Steam || attribute.empty()) return "";
+
+	return g_Steam->GetAchievementDisplayAttribute(name, attribute);
+}
+
+bool AIRSteam_GetNumAchievements() {
+	return g_Steam->GetNumAchievements();
+}
+
+bool AIRSteam_GetAchievementIcon() {
+	std::string name = g_Steam->get_string();
+	if (!g_Steam || name.empty()) return false;
+
+	Image image = g_Steam->GetAchievementIcon(name);
+
+	g_Steam->send(image.width);
+	g_Steam->send(image.height);
+	g_Steam->sendBuffer(AmfByteArray(image.argb_data()));
+
+	return (image.data.size() != 0);
+}
+
 bool AIRSteam_IndicateAchievementProgress() {
 	std::string name = g_Steam->get_string();
 	uint32 current_progress = g_Steam->get_int();

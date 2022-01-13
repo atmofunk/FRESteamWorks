@@ -180,6 +180,66 @@ AIR_FUNC(AIRSteam_IsAchievement) {
 	return FREBool(g_Steam->IsAchievement(name));
 }
 
+AIR_FUNC(AIRSteam_IsAchievementEarned) {
+	ARG_CHECK(1, FREBool(false));
+
+	std::string name;
+	if (!FREGetString(argv[0], name)) return FREBool(false);
+
+	return FREBool(g_Steam->IsAchievementEarned(name));
+}
+
+AIR_FUNC(AIRSteam_GetAchievementAchievedPercent) {
+	ARG_CHECK(1, FREDouble(0.0));
+
+	std::string name;
+	if (!FREGetString(argv[0], name)) return FREDouble(0.0);
+
+	float value = 0.0f;
+	g_Steam->GetAchievementAchievedPercent(name, &value);
+	return FREDouble(value);
+}
+
+AIR_FUNC(AIRSteam_GetAchievementDisplayAttribute) {
+	ARG_CHECK(2, "");
+
+	std::string name;
+	if (!FREGetString(argv[0], name)) return "";
+
+	std::string attribute;
+	if (!FREGetString(argv[1], attribute)) return "";
+
+	return FREString(g_Steam->GetAchievementDisplayAttribute(name, attribute));
+}
+
+AIR_FUNC(AIRSteam_GetAchievementName) {
+	ARG_CHECK(1, "");
+
+	uint32 index;
+	if (!FREGetUint32(argv[0], &index)) return "";
+
+	return FREString(g_Steam->GetAchievementName(index));
+}
+
+AIR_FUNC(AIRSteam_GetNumAchievements) {
+	ARG_CHECK(0, 0);
+	return FREInt(g_Steam->GetNumAchievements());
+}
+
+
+AIR_FUNC(AIRSteam_GetAchievementIcon) {
+	ARG_CHECK(1, nullptr);
+
+	std::string name;
+	if (!FREGetString(argv[0], name)) return nullptr;
+
+	Image image = g_Steam->GetAchievementIcon(name);
+	if (image.data.size() == 0) return nullptr;
+	return FREBitmapDataFromImageRGBA(image.width, image.height, image.argb_data());
+}
+
+
+
 AIR_FUNC(AIRSteam_IndicateAchievementProgress) {
 	ARG_CHECK(3, FREBool(false));
 
@@ -195,6 +255,8 @@ AIR_FUNC(AIRSteam_IndicateAchievementProgress) {
 	return FREBool(g_Steam->IndicateAchievementProgress(name,
 		current_progress, max_progress));
 }
+
+
 
 AIR_FUNC(AIRSteam_GetStatInt) {
 	ARG_CHECK(1, FREInt(0));
@@ -228,6 +290,7 @@ AIR_FUNC(AIRSteam_SetStatInt) {
 
 	return FREBool(g_Steam->SetStat(name, value));
 }
+
 AIR_FUNC(AIRSteam_SetStatFloat) {
 	ARG_CHECK(2, FREBool(false));
 
