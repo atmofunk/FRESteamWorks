@@ -7,7 +7,7 @@ OS X and Linux.
 
 
 # waveofthought #
-I forked this project to both expand Steamworks functionality and enable 64-bit builds.  All of Ventero's instructions are still valid, and the examples/tests still work.
+I forked this project to both expand Steamworks functionality and output 64-bit DLLs.  All of the Ventero instructions/examples/tests should still work.
 ### Additional API ###
 ```
 SetRichPresence(key:String, value:String):void
@@ -22,10 +22,11 @@ getAchievementAchievedPercent(achName:String):Number
 getAchievementDisplayAttribute(achName:String, attribute:String):String
 getAchievementIcon(achName):String
 getAchievementName(achIndex:int):String
+getNumAchievements():int
 
 getLargeFriendAvatar(is:String):BitmapData
 
-setOverlayNotificationInset(hInset:int, vInset:int) : void
+setOverlayNotificationInset(hInset:int, vInset:int):void
 
 overlayNeedsPresent():Boolean
 ```
@@ -40,8 +41,8 @@ A new SDKPaths.props file has been added to help specify your own Air + Steam SD
 2) Check both Win32 + x64 Releases
 3) Click Build (or Rebuild)
 
-The original post-build event will copy DLLs to the ../lib/bin folder and attempt to run compileANE.bat as expected, but will trigger twice.
-As such, compileANE.bat has been updated to check for the existence of both 32+64 bit DLLs before continuing, to prevent errors.
+The original post-build event will continue to copy DLLs to the ../lib/bin folder and attempt to run compileANE.bat as expected, but can/will trigger twice.
+As such, compileANE.bat has been updated to check for the existence of both 32+64 bit DLLs before continuing, to prevent potential errors.
 
 
 # Ventero #
