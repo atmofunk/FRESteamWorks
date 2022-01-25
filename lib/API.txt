@@ -79,11 +79,6 @@ public function restartAppIfNecessary(appID:uint):Boolean
 public function getIPCountry():String
 
 // +wot
-// ISteamUtils#IsSteamRunningOnSteamDeck()
-// @default false
-public function isSteamRunningOnSteamDeck():Boolean
-
-// +wot
 // ISteamUtils#IsSteamInBigPictureMode()
 // @default false
 public function isSteamInBigPictureMode():Boolean

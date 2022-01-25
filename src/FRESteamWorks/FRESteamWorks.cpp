@@ -117,12 +117,6 @@ AIR_FUNC(AIRSteam_GetIPCountry) {
 	return FREString(g_Steam->GetIPCountry());
 }
 
-AIR_FUNC(AIRSteam_IsSteamRunningOnSteamDeck) {
-	if (!g_Steam) return FREBool(false);
-
-	return FREBool(g_Steam->IsSteamRunningOnSteamDeck());
-}
-
 AIR_FUNC(AIRSteam_IsSteamInBigPictureMode) {
 	if (!g_Steam) return FREBool(false);
 

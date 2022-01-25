@@ -138,12 +138,6 @@ std::string AIRSteam_GetIPCountry() {
 	return g_Steam->GetIPCountry();
 }
 
-bool AIRSteam_IsSteamRunningOnSteamDeck() {
-	if (!g_Steam) return false;
-
-	return g_Steam->IsSteamRunningOnSteamDeck();
-}
-
 bool AIRSteam_IsSteamBigPictureMode() {
 	if (!g_Steam) return false;
 

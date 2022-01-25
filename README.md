@@ -6,15 +6,18 @@ storage, workshop support and much more in your AIR application - on Windows,
 OS X and Linux.
 
 
-# waveofthought #
-I forked this project to both expand Steamworks functionality and output 64-bit DLLs.  All of the Ventero instructions/examples/tests should still work.
+# waveofthought contrib #
+I forked this project to both expand Steamworks functionality and output 64-bit DLLs for Windows.  All of the Ventero instructions/examples/tests should still work, but as of this writing I have not yet updated the Ventero tests to reflect the new API.
+
+A working ANE for windows/mac can be [found here](waveofthought.com/FRESteamWorks)
+The Linux SWC has not been updated, as I do not have a linux machine.  You'll have to build it yourself if you need linux support.
+
 ### Additional API ###
 ```
 SetRichPresence(key:String, value:String):void
 ClearRichPresence():void
 
 GetIPCountry():String
-IsSteamRunningOnSteamDeck():Boolean
 IsSteamInBigPictureMode():Boolean
 
 isAchievementEarned(achName:String):Boolean // same as isAchievement(), but clearer to its purpose
@@ -32,6 +35,8 @@ overlayNeedsPresent():Boolean
 ```
 
 ### Building ###
+Don't worry about this section if you only plan to copy the ANE as-is to your game.  
+
 Project has been updated to VS2019
 
 A new SDKPaths.props file has been added to help specify your own Air + Steam SDK install directories.  Edit this file directly, or use the VS Properties Manager

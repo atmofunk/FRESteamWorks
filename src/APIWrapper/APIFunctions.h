@@ -24,7 +24,6 @@ std::string AIRSteam_GetAvailableGameLanguages();
 std::string AIRSteam_GetCurrentGameLanguage();
 std::string AIRSteam_GetPersonaName();
 std::string AIRSteam_GetIPCountry();
-bool AIRSteam_IsSteamRunningOnSteamDeck();
 bool AIRSteam_IsSteamInBigPictureMode();
 bool AIRSteam_RestartAppIfNecessary();
 bool AIRSteam_RequestStats();

@@ -38,7 +38,6 @@ package com.amanitadesign.steam {
 		function getPersonaName():String
 		function restartAppIfNecessary(appID:uint):Boolean
 		function getIPCountry():String
-		function isSteamRunningOnSteamDeck():Boolean
 		function isSteamInBigPictureMode():Boolean
 		/************************/
 		/* Stats / Achievements */

@@ -40,7 +40,6 @@ public:
 	std::string GetCurrentGameLanguage();
 	std::string GetPersonaName();
 	std::string GetIPCountry();
-	bool IsSteamRunningOnSteamDeck();
 	bool IsSteamInBigPictureMode();
 
 	// stats/achievements

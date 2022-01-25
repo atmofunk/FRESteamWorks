@@ -109,10 +109,6 @@ std::string CSteam::GetIPCountry() {
 	return std::string(m_ctx.SteamUtils()->GetIPCountry());
 }
 
-bool CSteam::IsSteamRunningOnSteamDeck(){
-	return m_ctx.SteamUtils()->IsSteamRunningOnSteamDeck();
-}
-
 bool CSteam::IsSteamInBigPictureMode(){
 	return m_ctx.SteamUtils()->IsSteamInBigPictureMode();
 }

@@ -52,152 +52,151 @@ package com.amanitadesign.steam {
 		private static const AIRSteam_GetPersonaName:int = 6;
 		private static const AIRSteam_RestartAppIfNecessary:int = 7;
 		private static const AIRSteam_GetIPCountry:int = 8;
-		private static const AIRSteam_IsSteamRunningOnSteamDeck:int = 9;
-		private static const AIRSteam_IsSteamInBigPictureMode:int = 10;
+		private static const AIRSteam_IsSteamInBigPictureMode:int = 9;
 		/************************/
 		/* Stats / Achievements */
 		/************************/
-		private static const AIRSteam_RequestStats:int = 11;
-		private static const AIRSteam_SetAchievement:int = 12;
-		private static const AIRSteam_ClearAchievement:int = 13;
-		private static const AIRSteam_IsAchievement:int = 14;
-		private static const AIRSteam_IsAchievementEarned:int = 15;
-		private static const AIRSteam_GetAchievementAchievedPercent:int = 16;
-		private static const AIRSteam_GetAchievementDisplayAttribute:int = 17;
-		private static const AIRSteam_GetAchievementIcon:int = 18;
-		private static const AIRSteam_GetAchievementName:int = 19;
-		private static const AIRSteam_GetNumAchievements:int = 20;
-		private static const AIRSteam_IndicateAchievementProgress:int = 21;
-		private static const AIRSteam_GetStatInt:int = 22;
-		private static const AIRSteam_GetStatFloat:int = 23;
-		private static const AIRSteam_SetStatInt:int = 24;
-		private static const AIRSteam_SetStatFloat:int = 25;
-		private static const AIRSteam_StoreStats:int = 26;
-		private static const AIRSteam_ResetAllStats:int = 27;
-		private static const AIRSteam_RequestGlobalStats:int = 28;
-		private static const AIRSteam_GetGlobalStatInt:int = 29;
-		private static const AIRSteam_GetGlobalStatFloat:int = 30;
-		private static const AIRSteam_GetGlobalStatHistoryInt:int = 31;
-		private static const AIRSteam_GetGlobalStatHistoryFloat:int = 32;
+		private static const AIRSteam_RequestStats:int = 10;
+		private static const AIRSteam_SetAchievement:int = 11;
+		private static const AIRSteam_ClearAchievement:int = 12;
+		private static const AIRSteam_IsAchievement:int = 13;
+		private static const AIRSteam_IsAchievementEarned:int = 14;
+		private static const AIRSteam_GetAchievementAchievedPercent:int = 15;
+		private static const AIRSteam_GetAchievementDisplayAttribute:int = 16;
+		private static const AIRSteam_GetAchievementIcon:int = 17;
+		private static const AIRSteam_GetAchievementName:int = 18;
+		private static const AIRSteam_GetNumAchievements:int = 19;
+		private static const AIRSteam_IndicateAchievementProgress:int = 20;
+		private static const AIRSteam_GetStatInt:int = 21;
+		private static const AIRSteam_GetStatFloat:int = 22;
+		private static const AIRSteam_SetStatInt:int = 23;
+		private static const AIRSteam_SetStatFloat:int = 24;
+		private static const AIRSteam_StoreStats:int = 25;
+		private static const AIRSteam_ResetAllStats:int = 26;
+		private static const AIRSteam_RequestGlobalStats:int = 27;
+		private static const AIRSteam_GetGlobalStatInt:int = 28;
+		private static const AIRSteam_GetGlobalStatFloat:int = 29;
+		private static const AIRSteam_GetGlobalStatHistoryInt:int = 30;
+		private static const AIRSteam_GetGlobalStatHistoryFloat:int = 31;
 		/****************/
 		/* Leaderboards */
 		/****************/
-		private static const AIRSteam_FindLeaderboard:int = 33;
-		private static const AIRSteam_FindOrCreateLeaderboard:int = 34;
-		private static const AIRSteam_FindLeaderboardResult:int = 35;
-		private static const AIRSteam_GetLeaderboardName:int = 36;
-		private static const AIRSteam_GetLeaderboardEntryCount:int = 37;
-		private static const AIRSteam_GetLeaderboardSortMethod:int = 38;
-		private static const AIRSteam_GetLeaderboardDisplayType:int = 39;
-		private static const AIRSteam_UploadLeaderboardScore:int = 40;
-		private static const AIRSteam_UploadLeaderboardScoreResult:int = 41;
-		private static const AIRSteam_DownloadLeaderboardEntries:int = 42;
-		private static const AIRSteam_DownloadLeaderboardEntriesResult:int = 43;
+		private static const AIRSteam_FindLeaderboard:int = 32;
+		private static const AIRSteam_FindOrCreateLeaderboard:int = 33;
+		private static const AIRSteam_FindLeaderboardResult:int = 34;
+		private static const AIRSteam_GetLeaderboardName:int = 35;
+		private static const AIRSteam_GetLeaderboardEntryCount:int = 36;
+		private static const AIRSteam_GetLeaderboardSortMethod:int = 37;
+		private static const AIRSteam_GetLeaderboardDisplayType:int = 38;
+		private static const AIRSteam_UploadLeaderboardScore:int = 39;
+		private static const AIRSteam_UploadLeaderboardScoreResult:int = 40;
+		private static const AIRSteam_DownloadLeaderboardEntries:int = 41;
+		private static const AIRSteam_DownloadLeaderboardEntriesResult:int = 42;
 		/**************************/
 		/* Cloud / Remote Storage */
 		/**************************/
-		private static const AIRSteam_GetFileCount:int = 44;
-		private static const AIRSteam_GetFileSize:int = 45;
-		private static const AIRSteam_FileExists:int = 46;
-		private static const AIRSteam_FileWrite:int = 47;
-		private static const AIRSteam_FileRead:int = 48;
-		private static const AIRSteam_FileDelete:int = 49;
-		private static const AIRSteam_FileShare:int = 50;
-		private static const AIRSteam_FileShareResult:int = 51;
-		private static const AIRSteam_IsCloudEnabledForApp:int = 52;
-		private static const AIRSteam_SetCloudEnabledForApp:int = 53;
-		private static const AIRSteam_GetQuota:int = 54;
+		private static const AIRSteam_GetFileCount:int = 43;
+		private static const AIRSteam_GetFileSize:int = 44;
+		private static const AIRSteam_FileExists:int = 45;
+		private static const AIRSteam_FileWrite:int = 46;
+		private static const AIRSteam_FileRead:int = 47;
+		private static const AIRSteam_FileDelete:int = 48;
+		private static const AIRSteam_FileShare:int = 49;
+		private static const AIRSteam_FileShareResult:int = 50;
+		private static const AIRSteam_IsCloudEnabledForApp:int = 51;
+		private static const AIRSteam_SetCloudEnabledForApp:int = 52;
+		private static const AIRSteam_GetQuota:int = 53;
 		/******************/
 		/* UGC / Workshop */
 		/******************/
-		private static const AIRSteam_UGCDownload:int = 55;
-		private static const AIRSteam_UGCRead:int = 56;
-		private static const AIRSteam_GetUGCDownloadProgress:int = 57;
-		private static const AIRSteam_GetUGCDownloadResult:int = 58;
-		private static const AIRSteam_PublishWorkshopFile:int = 59;
-		private static const AIRSteam_PublishWorkshopFileResult:int = 60;
-		private static const AIRSteam_DeletePublishedFile:int = 61;
-		private static const AIRSteam_GetPublishedFileDetails:int = 62;
-		private static const AIRSteam_GetPublishedFileDetailsResult:int = 63;
-		private static const AIRSteam_EnumerateUserPublishedFiles:int = 64;
-		private static const AIRSteam_EnumerateUserPublishedFilesResult:int = 65;
-		private static const AIRSteam_EnumeratePublishedWorkshopFiles:int = 66;
-		private static const AIRSteam_EnumeratePublishedWorkshopFilesResult:int = 67;
-		private static const AIRSteam_EnumerateUserSubscribedFiles:int = 68;
-		private static const AIRSteam_EnumerateUserSubscribedFilesResult:int = 69;
-		private static const AIRSteam_EnumerateUserSharedWorkshopFiles:int = 70;
-		private static const AIRSteam_EnumerateUserSharedWorkshopFilesResult:int = 71;
-		private static const AIRSteam_EnumeratePublishedFilesByUserAction:int = 72;
-		private static const AIRSteam_EnumeratePublishedFilesByUserActionResult:int = 73;
-		private static const AIRSteam_SubscribePublishedFile:int = 74;
-		private static const AIRSteam_UnsubscribePublishedFile:int = 75;
-		private static const AIRSteam_CreatePublishedFileUpdateRequest:int = 76;
-		private static const AIRSteam_UpdatePublishedFileFile:int = 77;
-		private static const AIRSteam_UpdatePublishedFilePreviewFile:int = 78;
-		private static const AIRSteam_UpdatePublishedFileTitle:int = 79;
-		private static const AIRSteam_UpdatePublishedFileDescription:int = 80;
-		private static const AIRSteam_UpdatePublishedFileSetChangeDescription:int = 81;
-		private static const AIRSteam_UpdatePublishedFileVisibility:int = 82;
-		private static const AIRSteam_UpdatePublishedFileTags:int = 83;
-		private static const AIRSteam_CommitPublishedFileUpdate:int = 84;
-		private static const AIRSteam_GetPublishedItemVoteDetails:int = 85;
-		private static const AIRSteam_GetPublishedItemVoteDetailsResult:int = 86;
-		private static const AIRSteam_GetUserPublishedItemVoteDetails:int = 87;
-		private static const AIRSteam_GetUserPublishedItemVoteDetailsResult:int = 88;
-		private static const AIRSteam_UpdateUserPublishedItemVote:int = 89;
-		private static const AIRSteam_SetUserPublishedFileAction:int = 90;
+		private static const AIRSteam_UGCDownload:int = 54;
+		private static const AIRSteam_UGCRead:int = 55;
+		private static const AIRSteam_GetUGCDownloadProgress:int = 56;
+		private static const AIRSteam_GetUGCDownloadResult:int = 57;
+		private static const AIRSteam_PublishWorkshopFile:int = 58;
+		private static const AIRSteam_PublishWorkshopFileResult:int = 59;
+		private static const AIRSteam_DeletePublishedFile:int = 60;
+		private static const AIRSteam_GetPublishedFileDetails:int = 61;
+		private static const AIRSteam_GetPublishedFileDetailsResult:int = 62;
+		private static const AIRSteam_EnumerateUserPublishedFiles:int = 63;
+		private static const AIRSteam_EnumerateUserPublishedFilesResult:int = 64;
+		private static const AIRSteam_EnumeratePublishedWorkshopFiles:int = 65;
+		private static const AIRSteam_EnumeratePublishedWorkshopFilesResult:int = 66;
+		private static const AIRSteam_EnumerateUserSubscribedFiles:int = 67;
+		private static const AIRSteam_EnumerateUserSubscribedFilesResult:int = 68;
+		private static const AIRSteam_EnumerateUserSharedWorkshopFiles:int = 69;
+		private static const AIRSteam_EnumerateUserSharedWorkshopFilesResult:int = 70;
+		private static const AIRSteam_EnumeratePublishedFilesByUserAction:int = 71;
+		private static const AIRSteam_EnumeratePublishedFilesByUserActionResult:int = 72;
+		private static const AIRSteam_SubscribePublishedFile:int = 73;
+		private static const AIRSteam_UnsubscribePublishedFile:int = 74;
+		private static const AIRSteam_CreatePublishedFileUpdateRequest:int = 75;
+		private static const AIRSteam_UpdatePublishedFileFile:int = 76;
+		private static const AIRSteam_UpdatePublishedFilePreviewFile:int = 77;
+		private static const AIRSteam_UpdatePublishedFileTitle:int = 78;
+		private static const AIRSteam_UpdatePublishedFileDescription:int = 79;
+		private static const AIRSteam_UpdatePublishedFileSetChangeDescription:int = 80;
+		private static const AIRSteam_UpdatePublishedFileVisibility:int = 81;
+		private static const AIRSteam_UpdatePublishedFileTags:int = 82;
+		private static const AIRSteam_CommitPublishedFileUpdate:int = 83;
+		private static const AIRSteam_GetPublishedItemVoteDetails:int = 84;
+		private static const AIRSteam_GetPublishedItemVoteDetailsResult:int = 85;
+		private static const AIRSteam_GetUserPublishedItemVoteDetails:int = 86;
+		private static const AIRSteam_GetUserPublishedItemVoteDetailsResult:int = 87;
+		private static const AIRSteam_UpdateUserPublishedItemVote:int = 88;
+		private static const AIRSteam_SetUserPublishedFileAction:int = 89;
 		/***********/
 		/* Friends */
 		/***********/
-		private static const AIRSteam_GetFriendCount:int = 91;
-		private static const AIRSteam_GetFriendByIndex:int = 92;
-		private static const AIRSteam_GetFriendPersonaName:int = 93;
-		private static const AIRSteam_GetSmallFriendAvatar:int = 94;
-		private static const AIRSteam_GetMediumFriendAvatar:int = 95;
-		private static const AIRSteam_GetLargeFriendAvatar:int = 96;
-		private static const AIRSteam_SetRichPresence:int = 97;
-		private static const AIRSteam_ClearRichPresence:int = 98;
+		private static const AIRSteam_GetFriendCount:int = 90;
+		private static const AIRSteam_GetFriendByIndex:int = 91;
+		private static const AIRSteam_GetFriendPersonaName:int = 92;
+		private static const AIRSteam_GetSmallFriendAvatar:int = 93;
+		private static const AIRSteam_GetMediumFriendAvatar:int = 94;
+		private static const AIRSteam_GetLargeFriendAvatar:int = 95;
+		private static const AIRSteam_SetRichPresence:int = 96;
+		private static const AIRSteam_ClearRichPresence:int = 97;
 		/******************************/
 		/* Authentication & Ownership */
 		/******************************/
-		private static const AIRSteam_GetAuthSessionTicket:int = 99;
-		private static const AIRSteam_GetAuthSessionTicketResult:int = 100;
-		private static const AIRSteam_BeginAuthSession:int = 101;
-		private static const AIRSteam_EndAuthSession:int = 102;
-		private static const AIRSteam_CancelAuthTicket:int = 103;
-		private static const AIRSteam_UserHasLicenseForApp:int = 104;
-		private static const AIRSteam_RequestEncryptedAppTicket:int = 105;
-		private static const AIRSteam_GetEncryptedAppTicket:int = 106;
+		private static const AIRSteam_GetAuthSessionTicket:int = 98;
+		private static const AIRSteam_GetAuthSessionTicketResult:int = 99;
+		private static const AIRSteam_BeginAuthSession:int = 100;
+		private static const AIRSteam_EndAuthSession:int = 101;
+		private static const AIRSteam_CancelAuthTicket:int = 102;
+		private static const AIRSteam_UserHasLicenseForApp:int = 103;
+		private static const AIRSteam_RequestEncryptedAppTicket:int = 104;
+		private static const AIRSteam_GetEncryptedAppTicket:int = 105;
 		/***********/
 		/* Overlay */
 		/***********/
-		private static const AIRSteam_ActivateGameOverlay:int = 107;
-		private static const AIRSteam_ActivateGameOverlayToUser:int = 108;
-		private static const AIRSteam_ActivateGameOverlayToWebPage:int = 109;
-		private static const AIRSteam_ActivateGameOverlayToStore:int = 110;
-		private static const AIRSteam_ActivateGameOverlayInviteDialog:int = 111;
-		private static const AIRSteam_IsOverlayEnabled:int = 112;
-		private static const AIRSteam_SetOverlayNotificationPosition:int = 113;
-		private static const AIRSteam_SetOverlayNotificationInset:int = 114;
-		private static const AIRSteam_OverlayNeedsPresent:int = 115;
+		private static const AIRSteam_ActivateGameOverlay:int = 106;
+		private static const AIRSteam_ActivateGameOverlayToUser:int = 107;
+		private static const AIRSteam_ActivateGameOverlayToWebPage:int = 108;
+		private static const AIRSteam_ActivateGameOverlayToStore:int = 109;
+		private static const AIRSteam_ActivateGameOverlayInviteDialog:int = 110;
+		private static const AIRSteam_IsOverlayEnabled:int = 111;
+		private static const AIRSteam_SetOverlayNotificationPosition:int = 112;
+		private static const AIRSteam_SetOverlayNotificationInset:int = 113;
+		private static const AIRSteam_OverlayNeedsPresent:int = 114;
 		/***********************/
 		/* DLC / subscriptions */
 		/***********************/
-		private static const AIRSteam_IsSubscribedApp:int = 116;
-		private static const AIRSteam_IsDLCInstalled:int = 117;
-		private static const AIRSteam_GetDLCCount:int = 118;
-		private static const AIRSteam_InstallDLC:int = 119;
-		private static const AIRSteam_UninstallDLC:int = 120;
-		private static const AIRSteam_DLCInstalledResult:int = 121;
+		private static const AIRSteam_IsSubscribedApp:int = 115;
+		private static const AIRSteam_IsDLCInstalled:int = 116;
+		private static const AIRSteam_GetDLCCount:int = 117;
+		private static const AIRSteam_InstallDLC:int = 118;
+		private static const AIRSteam_UninstallDLC:int = 119;
+		private static const AIRSteam_DLCInstalledResult:int = 120;
 		/********************/
 		/* Microtransaction */
 		/********************/
-		private static const AIRSteam_MicroTxnResult:int = 122;
+		private static const AIRSteam_MicroTxnResult:int = 121;
 		/**********************************/
 		/* Other non-Steamworks functions */
 		/**********************************/
-		private static const AIRSteam_GetEnv:int = 123;
-		private static const AIRSteam_SetEnv:int = 124;
+		private static const AIRSteam_GetEnv:int = 122;
+		private static const AIRSteam_SetEnv:int = 123;
 		// END GENERATED VALUES
 
 		public function FRESteamWorks (target:IEventDispatcher = null) {
@@ -600,11 +599,6 @@ package com.amanitadesign.steam {
 		public function getIPCountry():String {
 			if(!callWrapper(AIRSteam_GetIPCountry, [])) return "";
 			return readStringResponse();
-		}
-
-		public function isSteamRunningOnSteamDeck():Boolean {
-			if(!callWrapper(AIRSteam_IsSteamRunningOnSteamDeck, [])) return false;
-			return readBoolResponse();
 		}
 
 		public function isSteamInBigPictureMode():Boolean {

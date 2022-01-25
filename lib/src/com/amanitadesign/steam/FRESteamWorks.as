@@ -150,10 +150,6 @@ package com.amanitadesign.steam {
 			return _ExtensionContext.call("AIRSteam_GetIPCountry") as String;
 		}
 
-		public function isSteamRunningOnSteamDeck():Boolean {
-			return _ExtensionContext.call("AIRSteam_IsSteamRunningOnSteamDeck") as Boolean;
-		}
-
 		public function isSteamInBigPictureMode():Boolean {
 			return _ExtensionContext.call("AIRSteam_IsSteamInBigPictureMode") as Boolean;
 		}
