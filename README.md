@@ -6,18 +6,18 @@ storage, workshop support and much more in your AIR application - on Windows,
 OS X and Linux.
 
 
-# waveofthought contrib #
-I forked this project to both expand Steamworks functionality and output 64-bit DLLs for Windows.  All of the Ventero instructions/examples/tests should still work, but as of this writing I have not yet updated the Ventero tests to reflect the new API.
+# waveofthought ::  64Bit + expanded API #
+I forked this project to both expand Steamworks functionality and output 64-bit capability for Windows.  All of the Ventero instructions/examples/tests should still work, but as of this writing I have not yet updated the Ventero tests to reflect the new API.
 
-A working ANE for windows/mac can be [found here](waveofthought.com/FRESteamWorks)
-The Linux SWC has not been updated, as I do not have a linux machine.  You'll have to build it yourself if you need linux support.
+A working ANE for windows/mac can be [downloaded here](https://waveofthought.com/FRESteamWorks).
+
+The Linux SWC has not been updated, as I do not have a Linux machine.  You'll have to build it yourself if you need Linux support.
 
 ### Additional API ###
 ```
 SetRichPresence(key:String, value:String):void
 ClearRichPresence():void
 
-GetIPCountry():String
 IsSteamInBigPictureMode():Boolean
 
 isAchievementEarned(achName:String):Boolean // same as isAchievement(), but clearer to its purpose
@@ -29,13 +29,17 @@ getNumAchievements():int
 
 getLargeFriendAvatar(is:String):BitmapData
 
-setOverlayNotificationInset(hInset:int, vInset:int):void
+getIPCountry():String
 
+setOverlayNotificationInset(hInset:int, vInset:int):void
 overlayNeedsPresent():Boolean
 ```
 
 ### Building ###
-Don't worry about this section if you only plan to copy the ANE as-is to your game.  
+Don't worry about this section if you only plan to copy the ANE as-is to your game.  [You can download it here](https://waveofthought.com/FRESteamWorks)
+
+#### Windows ####
+
 
 Project has been updated to VS2019
 
@@ -46,9 +50,12 @@ A new SDKPaths.props file has been added to help specify your own Air + Steam SD
 2) Check both Win32 + x64 Releases
 3) Click Build (or Rebuild)
 
-The original post-build event will continue to copy DLLs to the ../lib/bin folder and attempt to run compileANE.bat as expected, but can/will trigger twice.
-As such, compileANE.bat has been updated to check for the existence of both 32+64 bit DLLs before continuing, to prevent potential errors.
+The original post-build event will continue to copy DLLs to the ../lib/bin folder and attempt to run compileANE.bat as expected, but can/will trigger twice since its building two different DLLs.
+As such, compileANE.bat has been updated to check for the existence of both 32+64 bit DLLs before continuing, to prevent potential errors. It is what it is.
 
+
+#### macOS ####
+Ventero instructions should still apply, but the deployment target has been updated to macOS 10.10 due to the latest libsteam_api.dylib from Valve also being built for 10.10.
 
 # Ventero #
 
