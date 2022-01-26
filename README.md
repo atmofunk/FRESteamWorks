@@ -7,18 +7,18 @@ OS X and Linux.
 
 
 # waveofthought ::  64Bit + expanded API #
-I forked this project to both expand Steamworks functionality and output 64-bit capability for Windows.  All of the Ventero instructions/examples/tests should still work, but as of this writing I have not yet updated the Ventero tests to reflect the new API.
+I forked this project to both extend available Steamworks API *and* output 64-bit capability for Windows.  All of the Ventero instructions/examples/tests should still work, but as of this writing I have not yet updated the Ventero tests to reflect the new API.
 
-A working ANE for windows/mac can be [downloaded here](https://waveofthought.com/FRESteamWorks).
+A working ANE for Windows/macOS can be [downloaded here](https://waveofthought.com/FRESteamWorks).
 
 The Linux SWC has not been updated, as I do not have a Linux machine.  You'll have to build it yourself if you need Linux support.
 
 ### Additional API ###
 ```
-SetRichPresence(key:String, value:String):void
-ClearRichPresence():void
+setRichPresence(key:String, value:String):void
+clearRichPresence():void
 
-IsSteamInBigPictureMode():Boolean
+isSteamInBigPictureMode():Boolean
 
 isAchievementEarned(achName:String):Boolean // same as isAchievement(), but clearer to its purpose
 getAchievementAchievedPercent(achName:String):Number
