@@ -14,6 +14,7 @@ A working ANE for Windows/macOS can be [downloaded here](https://waveofthought.c
 The Linux SWC has not been updated, as I do not have a Linux machine.  You'll have to build it yourself if you need Linux support.
 
 ### Additional API ###
+The steam API docs can be [found here](https://partner.steamgames.com/doc/api).
 ```
 setRichPresence(key:String, value:String):void
 clearRichPresence():void
@@ -23,11 +24,11 @@ isSteamInBigPictureMode():Boolean
 isAchievementEarned(achName:String):Boolean // same as isAchievement(), but clearer to its purpose
 getAchievementAchievedPercent(achName:String):Number
 getAchievementDisplayAttribute(achName:String, attribute:String):String
-getAchievementIcon(achName):String
+getAchievementIcon(achName:String):BitmapData
 getAchievementName(achIndex:int):String
 getNumAchievements():int
 
-getLargeFriendAvatar(is:String):BitmapData
+getLargeFriendAvatar(friendID:String):BitmapData
 
 getIPCountry():String
 
