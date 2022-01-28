@@ -15,7 +15,7 @@ The Linux SWC has not been updated, as I do not have a Linux machine.  You'll ha
 
 ### Additional API ###
 The steam API docs can be [found here](https://partner.steamgames.com/doc/api).
-Below is just the new Steam stuff. For a full list of the available API, you can view [./lib/API.txt](https://github.com/waveofthought-code/FRESteamWorks/blob/master/lib/API.txt).
+Below is just the new Steam stuff. For a full list of the available API, you can view [lib/API.txt](https://github.com/waveofthought-code/FRESteamWorks/blob/master/lib/API.txt).
 ```
 setRichPresence(key:String, value:String):void
 clearRichPresence():void
