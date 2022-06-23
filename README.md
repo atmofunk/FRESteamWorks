@@ -7,7 +7,7 @@ OS X and Linux.
 
 
 # waveofthought ::  64Bit + expanded API #
-I forked this project to both extend available Steamworks API *and* output 64-bit capability for Windows.  All of the Ventero instructions/examples/tests should still work, but as of this writing I have not yet updated the Ventero tests to reflect the new API.
+I forked this project to both extend available Steamworks API *and* output 64-bit capability for Windows.  All of the Ventero instructions/examples/tests should still work (see below, under "Ventero"), but as of this writing I have not yet updated the Ventero tests to reflect the new API.
 
 A working ANE for Windows/macOS can be [downloaded here](https://waveofthought.com/FRESteamWorks).
 
@@ -15,6 +15,7 @@ The Linux SWC has not been updated, as I do not have a Linux machine.  You'll ha
 
 ### Additional API ###
 The steam API docs can be [found here](https://partner.steamgames.com/doc/api).
+Below is just the new Steam stuff. For a full list of the available API, you can view [lib/API.txt](https://github.com/waveofthought-code/FRESteamWorks/blob/master/lib/API.txt).
 ```
 setRichPresence(key:String, value:String):void
 clearRichPresence():void
