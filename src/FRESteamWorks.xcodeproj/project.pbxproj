@@ -265,14 +265,14 @@
 				LIBRARY_SEARCH_PATHS = "${HOME}/FRESteamWorks-64/SteamSDK/redistributable_bin/osx";
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = FRESteamWorks.framework/Versions/A/PrivateHeaders;
 				PRODUCT_NAME = FRESteamWorks;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_STYLE = debugging;
-				VALID_ARCHS = x86_64;
+				VALID_ARCHS = "x86_64 arm64";
 				WARNING_CFLAGS = (
 					"-Wall",
 					"-Wextra",
@@ -348,14 +348,14 @@
 				LIBRARY_SEARCH_PATHS = "${HOME}/FRESteamWorks-64/SteamSDK/redistributable_bin/osx";
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = FRESteamWorks.framework/Versions/A/PrivateHeaders;
 				PRODUCT_NAME = FRESteamWorks;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_STYLE = debugging;
-				VALID_ARCHS = x86_64;
+				VALID_ARCHS = "x86_64 arm64";
 				WARNING_CFLAGS = (
 					"-Wall",
 					"-Wextra",
