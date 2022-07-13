@@ -25,6 +25,7 @@
 		5407FE1318F7680F0097B5D3 /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
 		54B6962116AB356400CFBD85 /* Adobe AIR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Adobe AIR.framework"; path = "../../AirSDK/runtimes/air/mac/Adobe AIR.framework"; sourceTree = "<group>"; };
 		54BD38FD19016834002DD39B /* ResponseTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseTypes.h; path = CSteam/ResponseTypes.h; sourceTree = "<group>"; };
+		AC2FCB17287E3EEB00C43B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC61A76C25B8A8390097E5E4 /* Adobe AIR_64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "Adobe AIR_64"; path = "../../AirSDK/runtimes/air/mac/Adobe AIR.framework/Versions/1.0/Adobe AIR_64"; sourceTree = "<group>"; };
 		AC61A77125B8A86E0097E5E4 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = ../../SteamSDK/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +77,7 @@
 				5407FE0C18F5FA9E0097B5D3 /* FREConverters.h */,
 				1214330E15298AAF003FF426 /* FRESteamWorks.h */,
 				1214330F15298AAF003FF426 /* FRESteamWorks.cpp */,
+				AC2FCB17287E3EEB00C43B11 /* Info.plist */,
 			);
 			path = FRESteamWorks;
 			sourceTree = "<group>";
@@ -175,7 +177,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "set -ex\nrm -rf \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME\"\n\n# XCode on OS X Mavericks creates frameworks with a broken symlink\n# Create that link's target so adt doesn't complain later on\nmkdir -p \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Versions/Current/Resources\"\n\n# Fix lookup path for libsteam_api.dylib (packaged into Resources directory)\ninstall_name_tool -change \\\n    \"@loader_path/libsteam_api.dylib\" \"@rpath/../Resources/libsteam_api.dylib\" \\\n    \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/$EXECUTABLE_NAME\"\n\ncp -RL \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME\" \"$PROJECT_DIR/../lib/bin/\"\n\ncd \"$PROJECT_DIR/../lib/bin/\"\necho \"Compiling ANE...\"\n./compileANE.sh\n";
+			shellScript = "set -ex\nrm -rf \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME\"\n\n# XCode on OS X Mavericks creates frameworks with a broken symlink\n# Create that link's target so adt doesn't complain later on\nmkdir -p \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Versions/Current/Resources\"\n\n# Fix lookup path for libsteam_api.dylib (packaged into Resources directory)\ninstall_name_tool -change \\\n   \"@loader_path/libsteam_api.dylib\" \"@rpath/../Resources/libsteam_api.dylib\" \\\n   \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/$EXECUTABLE_NAME\"\n    \nmkdir -p \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME\"\n\n\n# Just copying over the FRESteamWorks lib without the Versions folder.\n# Codesigning was failing otherwise, when packaging with air SDK 33.1.1.856 or greater\n#cp -RL \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/FRESteamWorks\" \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME/FRESteamWorks\"\n#mkdir -p \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME/Resources\"\n\n# original copy, commented out in favor of the above\ncp -R \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME\" \"$PROJECT_DIR/../lib/bin/\"\n\ncd \"$PROJECT_DIR/../lib/bin/\"\necho \"Compiling ANE...\"\n./compileANE.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -372,6 +374,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 526XPMU7HW;
+				INFOPLIST_FILE = "$(SRCROOT)/FRESteamWorks/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -384,9 +387,10 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 526XPMU7HW;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/FRESteamWorks/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.amanitadesign;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amanitadesign.FRESteamWorks;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
