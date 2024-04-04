@@ -11,7 +11,7 @@
 #ifndef FRESTEAMWORKS_H
 #define FRESTEAMWORKS_H
 
-#if defined(WIN32)
+#ifdef _WIN32
 	#define EXPORT __declspec(dllexport)
 #else
 	// Symbols tagged with EXPORT are externally visible.
@@ -20,11 +20,11 @@
 #endif
 
 
-#if defined(WIN32)
-	#include <windows.h> // required for Air 50+ due to HWND references
+#ifdef _WIN32
+#include <windows.h> // required for Air 50+ due to HWND references
 
 #elif __APPLE__
-	#include <Cocoa/Cocoa.h> // required for Air 50+ due to HWND references
+#include <Cocoa/Cocoa.h> // required for Air 50+ due to HWND references
 
 #endif
 

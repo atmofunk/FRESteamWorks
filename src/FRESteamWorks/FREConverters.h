@@ -12,7 +12,14 @@
 #include <string>
 #include <vector>
 
+#ifdef _WIN32
 #include <windows.h> // required for Air 50+ due to HWND references
+
+#elif __APPLE__
+#include <Cocoa/Cocoa.h> // required for Air 50+ due to HWND references
+
+#endif
+
 #include <FlashRuntimeExtensions.h>
 // includes definitions of {u,}int{32,64}
 #include <steam/steamtypes.h>

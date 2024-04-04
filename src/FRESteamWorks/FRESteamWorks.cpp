@@ -1674,7 +1674,7 @@ AIR_FUNC(AIRSteam_SetEnv) {
 	if (!FREGetString(argv[0], name) ||
 		  !FREGetString(argv[1], value)) return FREBool(false);
 
-#ifdef WIN32
+#ifdef _WIN32
 	errno_t ret = _putenv_s(name.c_str(), value.c_str());
 #else
 	int ret = ::setenv(name.c_str(), value.c_str(), 1);
