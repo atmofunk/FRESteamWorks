@@ -1,7 +1,5 @@
 NativeApps
 builds/v*
-config.bat
-config.sh
 src/.dep
 src/.vs
 test/bin-debug/FRESteamWorksTest
