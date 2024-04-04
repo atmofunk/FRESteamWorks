@@ -376,6 +376,14 @@
 				DEVELOPMENT_TEAM = 526XPMU7HW;
 				INFOPLIST_FILE = "$(SRCROOT)/FRESteamWorks/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = (
+					"-x",
+					"objective-c",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-x",
+					"objective-c++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -390,6 +398,14 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/FRESteamWorks/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = (
+					"-x",
+					"objective-c",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-x",
+					"objective-c++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.amanitadesign.FRESteamWorks;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};

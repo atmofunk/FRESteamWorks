@@ -4,7 +4,7 @@ set -xe
 [ ! -e ../../config.sh ] && die "FRESteamWorks/config.sh is not set up!"
 . ../../config.sh
 
-"$FLEX_SDK/bin/acompc" -source-path ../src \
+"$AIR_SDK"/bin/acompc -source-path ../src \
                        -debug=false -optimize \
                        -include-sources ../src/ \
                        -swf-version=11 -output FRESteamWorksLib.swc
@@ -14,6 +14,11 @@ trap "rm -f library.swf catalog.xml" EXIT
 
 if [ ! -f FRESteamWorks.dll ]; then
 	echo "Creating dummy FRESteamWorks.dll"
+	touch FRESteamWorks.dll
+fi
+
+if [ ! -f FRESteamWorks-64.dll ]; then
+	echo "Creating dummy FRESteamWorks-64.dll"
 	touch FRESteamWorks.dll
 fi
 

@@ -219,22 +219,22 @@ AIR_FUNC(AIRSteam_GetAchievementAchievedPercent) {
 }
 
 AIR_FUNC(AIRSteam_GetAchievementDisplayAttribute) {
-	ARG_CHECK(2, "");
+	ARG_CHECK(2, FREString(""));
 
 	std::string name;
-	if (!FREGetString(argv[0], name)) return "";
+	if (!FREGetString(argv[0], name)) return FREString("");
 
 	std::string attribute;
-	if (!FREGetString(argv[1], attribute)) return "";
+	if (!FREGetString(argv[1], attribute)) return FREString("");
 
 	return FREString(g_Steam->GetAchievementDisplayAttribute(name, attribute));
 }
 
 AIR_FUNC(AIRSteam_GetAchievementName) {
-	ARG_CHECK(1, "");
+	ARG_CHECK(1, FREString(""));
 
 	uint32 index;
-	if (!FREGetUint32(argv[0], &index)) return "";
+	if (!FREGetUint32(argv[0], &index)) return FREString("");
 
 	return FREString(g_Steam->GetAchievementName(index));
 }
