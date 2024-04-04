@@ -116,6 +116,7 @@ bool AIRSteam_GetMediumFriendAvatar();
 bool AIRSteam_GetLargeFriendAvatar();
 bool AIRSteam_SetRichPresence();
 bool AIRSteam_ClearRichPresence();
+bool AIRSteam_SetPlayedWith();
 uint32 AIRSteam_GetAuthSessionTicket();
 uint32 AIRSteam_GetAuthSessionTicketResult();
 int AIRSteam_BeginAuthSession();

@@ -40,7 +40,14 @@ public:
 	std::string GetCurrentGameLanguage();
 	std::string GetPersonaName();
 	std::string GetIPCountry();
+
+	uint32 GetEarliestPurchaseUnixTime(AppId_t appId);
+	uint32 GetSecondsSinceAppActive();
+	uint32 GetServerRealTime();
+
 	bool IsSteamInBigPictureMode();
+	bool IsSteamRunningOnSteamDeck();
+
 
 	// stats/achievements
 	bool RequestStats();
@@ -160,13 +167,18 @@ public:
 	Image GetMediumFriendAvatar(CSteamID steamId);
 	Image GetLargeFriendAvatar(CSteamID steamId);
 
+	int GetCoplayFriendCount();
+	CSteamID GetCoplayFriend(int index);
+
 	// rich presence
 	bool SetRichPresence(std::string key, std::string value);
 	bool ClearRichPresence();
 	//
+
+	bool SetPlayedWith(CSteamID steamId);
 	
 	// authentication & ownership
-	HAuthTicket GetAuthSessionTicket(char** data, uint32* length);
+	HAuthTicket GetAuthSessionTicket(char** data, uint32* length, CSteamID steamID);
 	HAuthTicket GetAuthSessionTicketResult();
 	EBeginAuthSessionResult BeginAuthSession(const void* data, int length, CSteamID steamId);
 	bool EndAuthSession(CSteamID steamId);

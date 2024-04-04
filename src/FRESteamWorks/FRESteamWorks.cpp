@@ -123,6 +123,30 @@ AIR_FUNC(AIRSteam_IsSteamInBigPictureMode) {
 	return FREBool(g_Steam->IsSteamInBigPictureMode());
 }
 
+AIR_FUNC(AIRSteam_IsSteamRunningOnSteamDeck) {
+	if (!g_Steam) return FREBool(false);
+
+	return FREBool(g_Steam->IsSteamRunningOnSteamDeck());
+}
+
+AIR_FUNC(AIRSteam_GetEarliestPurchaseUnixTime) {
+	if (!g_Steam) return FREUint(0);
+	if (argc != 1) return FREUint(0);
+
+	uint32 appID = 0;
+	if (!FREGetUint32(argv[0], &appID)) return FREUint(0);
+
+	return FREUint(g_Steam->GetEarliestPurchaseUnixTime(appID));
+}
+
+AIR_FUNC(AIRSteam_GetServerRealTime) {
+	return FREUint(g_Steam->GetServerRealTime());
+}
+
+AIR_FUNC(AIRSteam_GetSecondsSinceAppActive) {
+	return FREUint(g_Steam->GetSecondsSinceAppActive());
+}
+
 AIR_FUNC(AIRSteam_RestartAppIfNecessary) {
 	if (argc != 1) return FREBool(false);
 	uint32 appID = 0;
@@ -1303,6 +1327,24 @@ AIR_FUNC(AIRSteam_GetLargeFriendAvatar) {
 	return FREBitmapDataFromImageRGBA(image.width, image.height, image.argb_data());
 }
 
+
+AIR_FUNC(AIRSteam_GetCoplayFriendCount) {
+	if (!g_Steam) return FREInt(0);
+
+	return FREInt(g_Steam->GetCoplayFriendCount());
+}
+
+AIR_FUNC(AIRSteam_GetCoplayFriend) {
+	if (!g_Steam) return FREUint64(0);
+
+	ARG_CHECK(1, FREInt(0));
+
+	int32 index;
+	if (!FREGetInt32(argv[0], &index)) return FREUint64(0);
+
+	return FREUint64(g_Steam->GetCoplayFriend(index).ConvertToUint64());
+}
+
 AIR_FUNC(AIRSteam_SetRichPresence) {
 	ARG_CHECK(2, FREBool(false));
 
@@ -1320,16 +1362,28 @@ AIR_FUNC(AIRSteam_ClearRichPresence) {
 	return FREBool(g_Steam->ClearRichPresence());
 }
 
+AIR_FUNC(AIRSteam_SetPlayedWith) {
+	ARG_CHECK(1, FREBool(false));
+
+	uint64 steamId;
+	if (!FREGetUint64(argv[0], &steamId)) return FREBool(false);
+
+	return FREBool(g_Steam->SetPlayedWith(CSteamID(steamId)));
+}
+
 /*
  * authentication & ownership
  */
 
 AIR_FUNC(AIRSteam_GetAuthSessionTicket) {
-	ARG_CHECK(1, FREUint(k_HAuthTicketInvalid));
+	ARG_CHECK(2, FREUint(k_HAuthTicketInvalid));
+
+	uint64 steamId;
+	if (!FREGetUint64(argv[1], &steamId)) return nullptr;
 
 	char* data = nullptr;
 	uint32 length = 0;
-	HAuthTicket ret = g_Steam->GetAuthSessionTicket(&data, &length);
+	HAuthTicket ret = g_Steam->GetAuthSessionTicket(&data, &length, CSteamID(steamId));
 
 	SET_PROP(argv[0], "length", FREUint(length));
 

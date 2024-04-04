@@ -16,6 +16,38 @@ The Linux SWC has not been updated, as I do not have a Linux machine.  You'll ha
 ### Additional API ###
 The steam API docs can be [found here](https://partner.steamgames.com/doc/api).
 Below is just the new Steam stuff. For a full list of the available API, you can view [lib/API.txt](https://github.com/waveofthought-code/FRESteamWorks/blob/master/lib/API.txt).
+
+
+April 2024 additions (using Steam sdk 1.59):
+```
+[modified]
+getAuthSessionTicket(ticket:ByteArray, steamID:String)
+    - steamID is now required (you can just use getUserID())
+    - see https://partner.steamgames.com/doc/api/ISteamUser#GetAuthSessionTicket for more insight as to why
+
+setPlayedWith(steamID:String) : Boolean 
+    - Register a steam player to your "recently played with" list
+
+getCoplayFriendCount() : int
+    - Gets the number of players that the current user has recently played with, across all games.
+
+getCoplayFriend() : String
+    - Gets the Steam ID of the recently played with user at the given index (must call getCoplayFriendCount() first)
+
+getServerRealTime : uint
+    - Returns the Steam server time in Unix epoch format. (Number of seconds since Jan 1, 1970 UTC)
+
+getSecondsSinceAppActive : uint
+    - Returns the number of seconds since the application was active.
+
+getEarliestPurchaseUnixTime(appId:String) : uint
+    - Gets the time of purchase of the specified app in Unix epoch format (time since Jan 1st, 1970).
+
+isSteamRunningOnSteamDeck : Boolean
+    - Is this game currently running on Steam deck?
+```
+
+Previous additions:
 ```
 setRichPresence(key:String, value:String):void
 clearRichPresence():void

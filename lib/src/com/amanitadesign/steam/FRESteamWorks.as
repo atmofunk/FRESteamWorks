@@ -154,6 +154,22 @@ package com.amanitadesign.steam {
 			return _ExtensionContext.call("AIRSteam_IsSteamInBigPictureMode") as Boolean;
 		}
 
+		public function isSteamRunningOnSteamDeck():Boolean {
+			return _ExtensionContext.call("AIRSteam_IsSteamRunningOnSteamDeck") as Boolean;
+		}
+
+		public function getServerRealTime():uint {
+			return _ExtensionContext.call("AIRSteam_GetServerRealTime") as uint;
+		}
+
+		public function getSecondsSinceAppActive():uint {
+			return _ExtensionContext.call("AIRSteam_GetSecondsSinceAppActive") as uint;
+		}
+
+		public function getEarliestPurchaseUnixTime(appID:String):uint {
+			return _ExtensionContext.call("AIRSteam_GetEarliestPurchaseUnixTime", appID) as uint;
+		}
+
 		/************************/
 		/* Stats / Achievements */
 		/************************/
@@ -521,11 +537,23 @@ package com.amanitadesign.steam {
 			return _ExtensionContext.call("AIRSteam_ClearRichPresence") as Boolean;
 		}
 
+		public function setPlayedWith(steamID:String):Boolean {
+			return _ExtensionContext.call("AIRSteam_SetPlayedWith", steamID) as Boolean;
+		}
+
+		public function getCoplayFriendCount():int {
+			return _ExtensionContext.call("AIRSteam_GetCoplayFriendCount") as int;
+		}
+
+		public function getCoplayFriend(index:int):String {
+			return _ExtensionContext.call("AIRSteam_GetCoplayFriend", index) as String;
+		}
+
 		/******************************/
 		/* Authentication & Ownership */
 		/******************************/
-		public function getAuthSessionTicket(ticket:ByteArray):uint {
-			return _ExtensionContext.call("AIRSteam_GetAuthSessionTicket", ticket) as uint;
+		public function getAuthSessionTicket(ticket:ByteArray, steamID:String):uint {
+			return _ExtensionContext.call("AIRSteam_GetAuthSessionTicket", ticket, steamID) as uint;
 		}
 
 		public function getAuthSessionTicketResult():uint {

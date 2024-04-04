@@ -19,6 +19,7 @@
 	#define EXPORT __attribute__((visibility("default")))
 #endif
 
+#include <windows.h> // required for Air 50+ due to HWND references
 #include <FlashRuntimeExtensions.h>
 
 #include "CSteam/CSteam.h"

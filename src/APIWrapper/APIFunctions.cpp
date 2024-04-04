@@ -144,6 +144,12 @@ bool AIRSteam_IsSteamBigPictureMode() {
 	return g_Steam->IsSteamBigPictureMode();
 }
 
+bool AIRSteam_IsSteamRunningOnSteamDeck() {
+	if (!g_Steam) return false;
+
+	return g_Steam->IsSteamRunningOnSteamDeck();
+}
+
 /*
  * stats / achievements
  */
@@ -1142,6 +1148,12 @@ bool AIRSteam_ClearRichPresence() {
 	return g_Steam->ClearRichPresence();
 }
 
+bool AIRSteam_SetPlayedWith() {
+	uint64 steamId = g_Steam->get_uint64();
+
+	return g_Steam->SetPlayedWith(CSteamID(steamId));
+}
+
 /*
  * authentication & ownership
  */
@@ -1149,9 +1161,11 @@ bool AIRSteam_ClearRichPresence() {
 uint32 AIRSteam_GetAuthSessionTicket() {
 	if (!g_Steam) return k_HAuthTicketInvalid;
 
+	uint64 steamId = g_Steam->get_uint64();
+
 	char* data = nullptr;
 	uint32 length = 0;
-	HAuthTicket ret = g_Steam->GetAuthSessionTicket(&data, &length);
+	HAuthTicket ret = g_Steam->GetAuthSessionTicket(&data, &length, CSteamID(steamId));
 
 	g_Steam->sendBuffer(AmfByteArray(data, data + length));
 	delete[] data;

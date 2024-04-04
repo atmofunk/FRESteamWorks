@@ -83,6 +83,29 @@ public function getIPCountry():String
 // @default false
 public function isSteamInBigPictureMode():Boolean
 
+// +wot - April 2024
+// ISteamUtils#IsSteamRunningOnSteamDeck()
+// @default false
+public function isSteamRunningOnSteamDeck():Boolean
+
+// +wot - April 2024
+// ISteamUtils#GetServerRealTime
+// @default 0
+// returns uint32
+public function getServerRealTime():uint
+
+// +wot - April 2024
+// ISteamUtils#GetSecondsSinceAppActive
+// @default 0
+// returns uint32
+public function getSecondsSinceAppActive():uint
+
+// +wot - April 2024
+// ISteamApps#GetEarliestPurchaseUnixTime
+// @default 0
+// returns uint32
+public function getEarliestPurchaseUnixTime(appID:String):uint
+
 /************************/
 /* Stats / Achievements */
 /************************/
@@ -634,6 +657,29 @@ public function setRichPresence(key:String, value:String):Boolean
 // Clears your rich presence
 public function clearRichPresence():Boolean
 
+// +wot - April 2024
+// SetPlayedWith(id)
+// @default ""
+// Registers the steamID of a player you recently "played with".  Can be looked up in Steam overlay, and perhaps elsehwere
+public function setPlayedWith(steamID:String):Boolean
+
+
+// +wot - April 2024
+// GetCoplayFriendCount()
+// @default 0
+// Gets the number of players that the current user has recently played with, across all games.
+public function getCoplayFriendCount():int
+
+
+// +wot - April 2024
+// GetCoplayFriend()
+// @default 0
+// Gets the Steam ID of the recently played with user at the given index.
+public function getCoplayFriend(index:int):String
+
+
+
+
 /******************************/
 /* Authentication & Ownership */
 /******************************/
@@ -649,7 +695,8 @@ public function clearRichPresence():Boolean
 // UserConstants.AUTHTICKET_Invalid on failure.
 // If response = UserConstants.SESSION_OK, call getAuthSessionTicketResult to
 // get the actual valid ticket handle.
-public function getAuthSessionTicket(ticket:ByteArray):uint
+// +wot -- steamID is now required for creating a SteamNetworkingIdentity object
+public function getAuthSessionTicket(ticket:ByteArray, steamID:String):uint
 
 // @default UserConstants.AUTHTICKET_Invalid
 // Returns the ticket handle of the last successful call to getAuthSessionTicket

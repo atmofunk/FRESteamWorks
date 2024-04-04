@@ -39,6 +39,10 @@ package com.amanitadesign.steam {
 		function restartAppIfNecessary(appID:uint):Boolean
 		function getIPCountry():String
 		function isSteamInBigPictureMode():Boolean
+		function isSteamRunningOnSteamDeck():Boolean
+		function getServerRealTime():uint
+		function getSecondsSinceAppActive():uint
+		function getEarliestPurchaseUnixTime(appID:String):uint
 		/************************/
 		/* Stats / Achievements */
 		/************************/
@@ -142,10 +146,13 @@ package com.amanitadesign.steam {
 		function getLargeFriendAvatar(id:String):BitmapData
 		function setRichPresence(key:String, value:String):Boolean
 		function clearRichPresence():Boolean
+		function setPlayedWith(steamID:String):Boolean
+		function getCoplayFriendCount():int
+		function getCoplayFriend(index:int):String
 		/******************************/
 		/* Authentication & Ownership */
 		/******************************/
-		function getAuthSessionTicket(ticket:ByteArray):uint
+		function getAuthSessionTicket(ticket:ByteArray, steamID:String):uint
 		function getAuthSessionTicketResult():uint
 		function beginAuthSession(ticket:ByteArray, steamID:String):int
 		function endAuthSession(steamID:String):Boolean

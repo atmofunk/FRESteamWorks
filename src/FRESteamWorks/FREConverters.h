@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 
+#include <windows.h> // required for Air 50+ due to HWND references
 #include <FlashRuntimeExtensions.h>
 // includes definitions of {u,}int{32,64}
 #include <steam/steamtypes.h>

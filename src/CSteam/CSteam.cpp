@@ -113,6 +113,25 @@ bool CSteam::IsSteamInBigPictureMode(){
 	return m_ctx.SteamUtils()->IsSteamInBigPictureMode();
 }
 
+bool CSteam::IsSteamRunningOnSteamDeck() {
+	return m_ctx.SteamUtils()->IsSteamRunningOnSteamDeck();
+}
+
+
+uint32 CSteam::GetEarliestPurchaseUnixTime(AppId_t appId) {
+	return m_ctx.SteamApps()->GetEarliestPurchaseUnixTime(appId);
+}
+
+uint32 CSteam::GetSecondsSinceAppActive() {
+	return m_ctx.SteamUtils()->GetSecondsSinceAppActive();
+}
+
+uint32 CSteam::GetServerRealTime() {
+	return m_ctx.SteamUtils()->GetServerRealTime();
+}
+
+
+
 // stats/achievements
 
 bool CSteam::SetAchievement(std::string name) {
@@ -788,9 +807,22 @@ Image CSteam::GetLargeFriendAvatar(CSteamID steamId) {
 
 	int image_handle = m_ctx.SteamFriends()->GetLargeFriendAvatar(steamId);
 	return GetImageData(image_handle);
-
-
 }
+
+
+
+int CSteam::GetCoplayFriendCount() {
+	if (!m_bInitialized) return 0;
+
+	return m_ctx.SteamFriends()->GetCoplayFriendCount();
+}
+
+CSteamID CSteam::GetCoplayFriend(int index) {
+	if (!m_bInitialized) return k_steamIDNil;
+
+	return m_ctx.SteamFriends()->GetCoplayFriend(index);
+}
+
 
 Image CSteam::GetImageData(int image_handle) {
 	uint32 width, height;
@@ -805,6 +837,7 @@ Image CSteam::GetImageData(int image_handle) {
 	return image;
 }
 
+
 bool CSteam::SetRichPresence(std::string key, std::string value) {
 	if (!m_bInitialized) return false;
 	return m_ctx.SteamFriends()->SetRichPresence(key.c_str(), value.c_str());
@@ -815,15 +848,26 @@ bool CSteam::ClearRichPresence() {
 	return false;
 }
 
+bool CSteam::SetPlayedWith(CSteamID steamId) {
+	if (!m_bInitialized) return false;
+
+	m_ctx.SteamFriends()->SetPlayedWith(steamId);
+	return true;
+}
+
 // authentication & ownership
-HAuthTicket CSteam::GetAuthSessionTicket(char** data, uint32* length) {
+HAuthTicket CSteam::GetAuthSessionTicket(char** data, uint32* length, CSteamID steamID) {
 	if (!m_bInitialized) return k_HAuthTicketInvalid;
 
 	// the docs don't state a maximum length anywhere, so just use what their
 	// example app uses ...
 	const int bufsize = 1024;
 	char* buf = new char[bufsize];
-	HAuthTicket ret = m_ctx.SteamUser()->GetAuthSessionTicket(buf, bufsize, length);
+
+	SteamNetworkingIdentity snid;
+	snid.SetSteamID(steamID);
+
+	HAuthTicket ret = m_ctx.SteamUser()->GetAuthSessionTicket(buf, bufsize, length, &snid);
 
 	*data = buf;
 	return ret;
