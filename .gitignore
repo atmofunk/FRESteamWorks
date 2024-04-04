@@ -20,7 +20,6 @@ project.xcworkspace
 *.a
 *.so
 *.ane
-*.dll
 *.dmg
 *.exe
 *.swc
