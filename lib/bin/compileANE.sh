@@ -19,7 +19,7 @@ fi
 
 if [ ! -f FRESteamWorks-64.dll ]; then
 	echo "Creating dummy FRESteamWorks-64.dll"
-	touch FRESteamWorks.dll
+	touch FRESteamWorks-64.dll
 fi
 
 "$AIR_SDK"/bin/adt -package -target ane FRESteamWorks.ane descriptor.xml \

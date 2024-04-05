@@ -137,7 +137,7 @@
 		121432F415298AAF003FF426 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1420;
 				ORGANIZATIONNAME = "Level Up Labs";
 				TargetAttributes = {
 					121432FD15298AAF003FF426 = {
@@ -177,7 +177,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "set -ex\nrm -rf \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME\"\n\n# XCode on OS X Mavericks creates frameworks with a broken symlink\n# Create that link's target so adt doesn't complain later on\nmkdir -p \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Versions/Current/Resources\"\n\n# Fix lookup path for libsteam_api.dylib (packaged into Resources directory)\ninstall_name_tool -change \\\n   \"@loader_path/libsteam_api.dylib\" \"@rpath/../Resources/libsteam_api.dylib\" \\\n   \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/$EXECUTABLE_NAME\"\n    \nmkdir -p \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME\"\n\n\n# Just copying over the FRESteamWorks lib without the Versions folder.\n# Codesigning was failing otherwise, when packaging with air SDK 33.1.1.856 or greater\n#cp -RL \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/FRESteamWorks\" \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME/FRESteamWorks\"\n#mkdir -p \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME/Resources\"\n\n# original copy, commented out in favor of the above\ncp -R \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME\" \"$PROJECT_DIR/../lib/bin/\"\n\ncd \"$PROJECT_DIR/../lib/bin/\"\necho \"Compiling ANE...\"\n./compileANE.sh\n";
+			shellScript = "set -ex\nrm -rf \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME\"\n\n# XCode on OS X Mavericks creates frameworks with a broken symlink\n# Create that link's target so adt doesn't complain later on\nmkdir -p \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Versions/Current/Resources\"\n\n# Fix lookup path for libsteam_api.dylib (packaged into Resources directory)\ninstall_name_tool -change \\\n   \"@loader_path/libsteam_api.dylib\" \"@rpath/../Resources/libsteam_api.dylib\" \\\n   \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/$EXECUTABLE_NAME\"\n    \nmkdir -p \"$PROJECT_DIR/../lib/bin/$FULL_PRODUCT_NAME\"\n\n# original copy, commented out in favor of the above\ncp -RL \"$TARGET_BUILD_DIR/$FULL_PRODUCT_NAME\" \"$PROJECT_DIR/../lib/bin/\"\n\ncd \"$PROJECT_DIR/../lib/bin/\"\necho \"Compiling ANE...\"\n./compileANE.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -223,6 +223,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
 				DYLIB_CURRENT_VERSION = 0.5.0;
@@ -266,8 +267,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "\"@executable_path/../Frameworks\" \"/Library/Frameworks\"";
 				LIBRARY_SEARCH_PATHS = "${HOME}/FRESteamWorks-64/SteamSDK/redistributable_bin/osx";
 				MACH_O_TYPE = mh_dylib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
 				PRIVATE_HEADERS_FOLDER_PATH = FRESteamWorks.framework/Versions/A/PrivateHeaders;
 				PRODUCT_NAME = FRESteamWorks;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
@@ -311,6 +312,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
 				DYLIB_CURRENT_VERSION = 0.5.0;
@@ -349,7 +351,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "\"@executable_path/../Frameworks\" \"/Library/Frameworks\"";
 				LIBRARY_SEARCH_PATHS = "${HOME}/FRESteamWorks-64/SteamSDK/redistributable_bin/osx";
 				MACH_O_TYPE = mh_dylib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = FRESteamWorks.framework/Versions/A/PrivateHeaders;
 				PRODUCT_NAME = FRESteamWorks;
@@ -373,9 +375,10 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 526XPMU7HW;
 				INFOPLIST_FILE = "$(SRCROOT)/FRESteamWorks/Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CFLAGS = (
 					"-x",
 					"objective-c",
@@ -395,9 +398,10 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/FRESteamWorks/Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CFLAGS = (
 					"-x",
 					"objective-c",
