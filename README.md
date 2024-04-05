@@ -10,6 +10,7 @@ OS X and Linux.
 I forked this project to both extend available Steamworks API *and* output 64-bit capability for Windows.  All of the Ventero instructions/examples/tests should still work (see below, under "Ventero"), but as of this writing I have not yet updated the Ventero tests to reflect the new API.
 
 A working ANE for Windows/macOS can be [downloaded here](https://waveofthought.com/FRESteamWorks).
+The version prior to April 2024 has been renamed to FRESteamWorks_2022.ane if you would prefer that one.
 
 The Linux SWC has not been updated, as I do not have a Linux machine.  You'll have to build it yourself if you need Linux support.
 
